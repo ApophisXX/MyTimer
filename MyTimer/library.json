@@ -1,0 +1,15 @@
+{
+  "name": "MyTimer",
+  "keywords": "MyTimer, MyTimerPin, MyTimerSerial",
+  "description": "Better usage of non blocking millis() timer. Prevent from using delay() function",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/ApophisXX/MyTimer.git"
+  },
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr"
+  ]
+}
