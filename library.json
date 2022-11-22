@@ -1,0 +1,38 @@
+{
+    "name": "MyTimery",
+    "version": "1.0.5",
+    "description": "Bunch of function for non blocking millis Timer, including interval of Serial Prints and so on",
+    "keywords": "Timer, delay, timer, blinkwithouttimer, non-blocking, Serial, LED, blink, LEDBlink",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/ApophisXX/MyTimer.git"
+    },
+
+    "authors":
+    [
+        {
+            "name": "ApophisXX",
+            "email": "no-Mail",
+            "maintainer": true
+        }
+
+    ],
+    "export": {
+        "exclude":
+        [
+            "dir/test/*"
+        ]
+    },
+    "license": "MIT",
+    "dependencies":
+    {
+
+    },
+    "frameworks": ["Arduino"],
+    "platforms":
+    [
+      "*"
+    ]
+  }
+  
