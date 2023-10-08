@@ -63,6 +63,8 @@ class MyTimerButton
     void begin();
     void beginPullUp();
     void setSystemMillis(unsigned long SystemMillis);
+    bool rising();
+    bool falling();
     bool pressed();
     bool released();
     bool toggled();
@@ -78,6 +80,12 @@ class MyTimerButton
 
     bool re_blocked, re_pressed = false; //void release
     unsigned long re_previousMillis = 0;
+
+    bool ri_blocked, ri_pressed = false; //void isPressed
+    unsigned long ri_previousMillis = 0;
+
+    bool fa_blocked, fa_pressed = false; //void isRelease
+    unsigned long fa_previousMillis = 0;
 
     bool to_blocked, to_pressed, toggle = false;  //void toggled
     unsigned long to_previousMillis = 0;

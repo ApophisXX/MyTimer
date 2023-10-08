@@ -237,20 +237,53 @@ void MyTimerButton::setSystemMillis(unsigned long SystemMillis){
   _currentMillis = SystemMillis;
 }
 
-bool MyTimerButton::pressed()
+bool MyTimerButton::rising()
+{    
+  ri_pressed = false;
+  if(_PullUpBegun){ if(digitalRead(_pin) == LOW){ri_pressed = true;} }
+  if(_Begun){ if(digitalRead(_pin) == HIGH){ri_pressed = true;} }
+
+    if(ri_pressed && !ri_blocked){
+      ri_previousMillis = _currentMillis;
+      ri_blocked = true;
+      return true;
+      }
+    if ((_currentMillis - ri_previousMillis >= _CoolDown) && ri_blocked && !ri_pressed){
+      ri_blocked = false;
+      return false;
+      }
+    return false;   
+}
+
+bool MyTimerButton::falling()
 {  
-  
+  fa_pressed = false;
+  if(_PullUpBegun){ if(digitalRead(_pin) == LOW){fa_pressed = true;} }
+  if(_Begun){ if(digitalRead(_pin) == HIGH){fa_blocked = true;} }
+
+    if(fa_pressed && !fa_blocked){
+      fa_previousMillis = _currentMillis;
+      fa_blocked = true;
+      return false;
+      }
+    if ((_currentMillis - fa_previousMillis >= _CoolDown) && fa_blocked && !fa_pressed){
+      fa_blocked = false;
+      return true;
+      }
+    return false;  
+}
+
+bool MyTimerButton::pressed()
+{   
   pr_pressed = false;
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){pr_pressed = true;} }
   if(_Begun){ if(digitalRead(_pin) == HIGH){pr_pressed = true;} }
 
-    if(pr_pressed && pr_blocked == false){
+    if(pr_pressed){
       pr_previousMillis = _currentMillis;
-      pr_blocked = true;
       return true;
       }
-    if ((_currentMillis - pr_previousMillis >= _CoolDown) && pr_blocked == true && !pr_pressed){
-      pr_blocked = false;
+    if ((_currentMillis - pr_previousMillis >= _CoolDown) && !pr_pressed){
       return false;
       }
     return false;   
@@ -262,16 +295,14 @@ bool MyTimerButton::released()
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){re_pressed = true;} }
   if(_Begun){ if(digitalRead(_pin) == HIGH){re_pressed = true;} }
 
-    if(re_pressed && re_blocked == false){
+    if(re_pressed){
       re_previousMillis = _currentMillis;
-      re_blocked = true;
       return false;
       }
-    if ((_currentMillis - re_previousMillis >= _CoolDown) && re_blocked == true && !re_pressed){
-      re_blocked = false;
+    if ((_currentMillis - re_previousMillis >= _CoolDown) && !re_pressed){
       return true;
       }
-    return false;  
+    return true;  
 }
 
 bool MyTimerButton::toggled()
@@ -280,19 +311,14 @@ bool MyTimerButton::toggled()
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){to_pressed = true;} }
   if(_Begun){ if(digitalRead(_pin) == HIGH){to_pressed = true;} }
 
-    if(to_pressed && to_blocked == false && toggle == false){
+    if(to_pressed && !to_blocked){
       to_previousMillis = _currentMillis;
       to_blocked = true;
-      toggle = true;
-      }
-    if(to_pressed && to_blocked == false && toggle == true){
-      to_previousMillis = _currentMillis;
-      to_blocked = true;
-      toggle = false;
+      toggle = !toggle;
       }
 
 
-    if ((_currentMillis - to_previousMillis  >= _CoolDown) && to_blocked == true && !to_pressed){
+    if ((_currentMillis - to_previousMillis  >= _CoolDown) && to_blocked && !to_pressed){
       to_blocked = false;
       }
 
@@ -315,7 +341,7 @@ uint16_t MyTimerButton::modeSwitch(uint16_t LowerEnd, uint16_t StartFrom, uint16
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){mo_pressed = true;} }
   if(_Begun){ if(digitalRead(_pin) == HIGH){mo_pressed = true;} }
 
-    if(mo_pressed && mo_blocked == false){
+    if(mo_pressed && !mo_blocked){
       mo_previousMillis = _currentMillis;
       mo_blocked = true;
       _mode = _mode + 1;
@@ -323,7 +349,7 @@ uint16_t MyTimerButton::modeSwitch(uint16_t LowerEnd, uint16_t StartFrom, uint16
     if(_mode > _UpperEnd){_mode = _LowerEnd;}
     if(_mode < _LowerEnd){_mode = _UpperEnd;}
 
-    if ((_currentMillis - mo_previousMillis  >= _CoolDown) && mo_blocked == true && !mo_pressed){
+    if ((_currentMillis - mo_previousMillis  >= _CoolDown) && mo_blocked && !mo_pressed){
       mo_blocked = false;
       }
 
