@@ -219,18 +219,18 @@ MyTimerButton::MyTimerButton(int pin, long CoolDown)
   _CoolDown = CoolDown;
 }
 
+void MyTimerButton::begin()
+{
+  if(_pin >= 0 && !_Begun)
+  pinMode(_pin, INPUT);
+  _Begun = true;
+}
+
 void MyTimerButton::beginPullUp()
 {
   if(_pin > 0 && !_PullUpBegun)
   pinMode(_pin, INPUT_PULLUP);
   _PullUpBegun = true;
-}
-
-void MyTimerButton::beginPullDown()
-{
-  if(_pin >= 0 && !_PullDownBegun)
-  pinMode(_pin, INPUT_PULLDOWN);
-  _PullDownBegun = true;
 }
 
 void MyTimerButton::setSystemMillis(unsigned long SystemMillis){
@@ -242,7 +242,7 @@ bool MyTimerButton::pressed()
   
   pr_pressed = false;
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){pr_pressed = true;} }
-  if(_PullDownBegun){ if(digitalRead(_pin) == HIGH){pr_pressed = true;} }
+  if(_Begun){ if(digitalRead(_pin) == HIGH){pr_pressed = true;} }
 
     if(pr_pressed && pr_blocked == false){
       pr_previousMillis = _currentMillis;
@@ -260,7 +260,7 @@ bool MyTimerButton::released()
 {  
   re_pressed = false;
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){re_pressed = true;} }
-  if(_PullDownBegun){ if(digitalRead(_pin) == HIGH){re_pressed = true;} }
+  if(_Begun){ if(digitalRead(_pin) == HIGH){re_pressed = true;} }
 
     if(re_pressed && re_blocked == false){
       re_previousMillis = _currentMillis;
@@ -278,7 +278,7 @@ bool MyTimerButton::toggled()
 {  
   to_pressed = false;
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){to_pressed = true;} }
-  if(_PullDownBegun){ if(digitalRead(_pin) == HIGH){to_pressed = true;} }
+  if(_Begun){ if(digitalRead(_pin) == HIGH){to_pressed = true;} }
 
     if(to_pressed && to_blocked == false && toggle == false){
       to_previousMillis = _currentMillis;
@@ -313,7 +313,7 @@ uint16_t MyTimerButton::modeSwitch(uint16_t LowerEnd, uint16_t StartFrom, uint16
   }
   mo_pressed = false;
   if(_PullUpBegun){ if(digitalRead(_pin) == LOW){mo_pressed = true;} }
-  if(_PullDownBegun){ if(digitalRead(_pin) == HIGH){mo_pressed = true;} }
+  if(_Begun){ if(digitalRead(_pin) == HIGH){mo_pressed = true;} }
 
     if(mo_pressed && mo_blocked == false){
       mo_previousMillis = _currentMillis;

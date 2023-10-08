@@ -60,8 +60,8 @@ class MyTimerButton
   
   public:
     MyTimerButton(int pin, long CoolDown);
+    void begin();
     void beginPullUp();
-    void beginPullDown();
     void setSystemMillis(unsigned long SystemMillis);
     bool pressed();
     bool released();
@@ -71,7 +71,7 @@ class MyTimerButton
   private:
     int _pin = 0;
     unsigned long _CoolDown, _currentMillis;
-    bool _PullUpBegun, _PullDownBegun = false;
+    bool _PullUpBegun, _Begun = false;
     
     bool pr_blocked, pr_pressed = false; //void pressed
     unsigned long pr_previousMillis = 0;
