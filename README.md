@@ -36,7 +36,18 @@ BLINK_PIN		- as BLINK_BOOL, but for Output pins (no need for the PIN to be set u
 
 ****#### For class MyTimerSerial ####****
 
-begin			- initialize the Serial communication
+begin			    - initialize the Serial communication
 
 IntervalSend		- sends a string in an adjustable interval, through the defined serial port  
 
+****#### For class MyTimerButton ####****
+
+beginPullUp	    - initialise the button instance wheter its normal INPUT or PULLUP
+begin		    - initialise the button instance wheter its normal INPUT or PULLUP
+setSystemMillis	- provides system time (millis()) for every instance to work
+rising		    - bool result for rising edge (button)
+falling 	    - bool result for falling edge (button)
+pressed		    - bool result, true while button is pressed
+released	    - bool result, true while button is not pressed
+toggled		    - bool result, gets toggled everytime you press the button
+modeSwitch	    - uint16_t result, counts upwards, adjustable limitations
