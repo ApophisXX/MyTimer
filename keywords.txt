@@ -28,7 +28,7 @@ beginPullUp	KEYWORD2
 beginPullDown	KEYWORD2
 setSystemMillis	KEYWORD2
 rising		KEYWORD2
-Falling 	KEYWORD2
+falling 	KEYWORD2
 pressed		KEYWORD2
 released	KEYWORD2
 toggled		KEYWORD2
