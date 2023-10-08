@@ -25,7 +25,7 @@ BLINK_PIN	KEYWORD2
 begin		KEYWORD2
 IntervalSend	KEYWORD2
 beginPullUp	KEYWORD2
-beginPullDown	KEYWORD2
+begin		KEYWORD2
 setSystemMillis	KEYWORD2
 rising		KEYWORD2
 falling 	KEYWORD2
