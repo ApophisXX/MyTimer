@@ -1,0 +1,44 @@
+#######################################
+# Syntax Coloring MyTimer
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MyTimer		KEYWORD1
+MyTimerPin	KEYWORD1
+MyTimerSerial	KEYWORD1
+MyTimerButton	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+POS	KEYWORD2
+NEG	KEYWORD2
+DELAY_ON	KEYWORD2
+BLINK_BOOL	KEYWORD2
+BLINK_ON_OFF	KEYWORD2
+BLINK_PIN	KEYWORD2
+begin		KEYWORD2
+IntervalSend	KEYWORD2
+beginPullUp	KEYWORD2
+beginPullDown	KEYWORD2
+setSystemMillis	KEYWORD2
+pressed		KEYWORD2
+released	KEYWORD2
+toggled		KEYWORD2
+modeSwitch	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+###################################################
+# https://www.arduino.cc/en/Hacking/LibraryTutorial
+###################################################
