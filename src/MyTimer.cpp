@@ -281,12 +281,13 @@ bool MyTimerButton::pressed()
 
     if(pr_pressed){
       pr_previousMillis = _currentMillis;
-      return true;
+      pr_blocked = true;
       }
     if ((_currentMillis - pr_previousMillis >= _CoolDown) && !pr_pressed){
-      return false;
+      pr_blocked = false;
       }
-    return false;   
+    if(pr_blocked) return true;
+    return false; 
 }
 
 bool MyTimerButton::released()
@@ -297,11 +298,12 @@ bool MyTimerButton::released()
 
     if(re_pressed){
       re_previousMillis = _currentMillis;
-      return false;
+      re_blocked = true;
       }
     if ((_currentMillis - re_previousMillis >= _CoolDown) && !re_pressed){
-      return true;
+      re_blocked = false;;
       }
+    if(pr_blocked) return false;
     return true;  
 }
 
