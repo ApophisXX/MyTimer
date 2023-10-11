@@ -16,17 +16,16 @@ MyTimerButton	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-POS	KEYWORD2
-NEG	KEYWORD2
-DELAY_ON	KEYWORD2
-BLINK_BOOL	KEYWORD2
-BLINK_ON_OFF	KEYWORD2
-BLINK_PIN	KEYWORD2
+pos		KEYWORD2
+setDelayedOn	KEYWORD2
+blinkOnOff	KEYWORD2
+intervalAdd	KEYWORD2
+
 begin		KEYWORD2
 IntervalSend	KEYWORD2
+
 beginPullUp	KEYWORD2
 begin		KEYWORD2
-setSystemMillis	KEYWORD2
 rising		KEYWORD2
 falling 	KEYWORD2
 pressed		KEYWORD2
