@@ -16,7 +16,7 @@ public:
   int intervalAdd(int LowerEnd, int UpperEnd, int StartValue, int IncrBy, long Interval, bool Start);
 
 private:
-  uint16_t _value;
+  int _value;
   unsigned long _Interval, _IntervalON, _IntervalOFF, _DelayMillis;
   unsigned long _currentMillis;
   unsigned long _previousMillis = 0;
