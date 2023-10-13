@@ -65,14 +65,12 @@ bool MyTimer::blinkOnOff(long TimeOn, long TimeOff, bool Start)
     {
       _previousMillis = _currentMillis;
       _merker = true;
-      return _merker;
     }
 
     if ((_currentMillis - _previousMillis >= _IntervalON) && _merker == true)
     {
       _previousMillis = _currentMillis;
       _merker = false;
-      return _merker;
     }
   }
   return _merker;
