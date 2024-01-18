@@ -11,7 +11,7 @@ Thanks to @redditUser   - LovableSidekick
                         - xyzzy1337
 
 ###### Created 30.11.2021 ########
-###### last Changed 10.11.2023 ########
+###### last Changed 18.01.2024 ########
 
 Provided functions:
 
@@ -107,6 +107,16 @@ Parameter: None
 This function needs to be called once in the setup() function of your code, to initialise the button if its a INPUT_PULLUP (Button connected to GND).
 Return: None
 Parameter: None
+
+****#### activateSnapIn ####****
+
+This function needs to be called once in the setup() function of your code.
+It is to activate the Snap In function of this Button for a continous mode of the function rising().
+Return: None
+Parameter:  unsigned long startAfter - the time after that the function starts
+            int fasterSteps - after how many steps the function increases in speed
+            uint8_t slowBPS - the steps per second in slow mode
+            uint8_t fastBPS - the steps per second in fast mode
 
 ****#### rising ####****
 
