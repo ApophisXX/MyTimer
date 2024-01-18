@@ -26,6 +26,7 @@ IntervalSend	KEYWORD2
 
 beginPullUp	KEYWORD2
 begin		KEYWORD2
+activateSnapIn  KEYWORD2
 rising		KEYWORD2
 falling 	KEYWORD2
 pressed		KEYWORD2

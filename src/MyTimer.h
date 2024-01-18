@@ -1,5 +1,5 @@
 /*
-  MyTimer.h - Library fpr setting up different Timer functions without delay
+  MyTimer.h - Library for setting up different timing functions without delay
 */
 #ifndef MyTimer_h
 #define MyTimer_h
@@ -60,6 +60,7 @@ public:
   MyTimerButton(int pin, long CoolDown);
   void begin();
   void beginPullUp();
+  void activateSnapIn(unsigned long startAfter, int fasterAfterSteps, uint8_t slowBPS, uint8_t fastBPS);
   bool rising();
   bool falling();
   bool pressed();
@@ -71,6 +72,12 @@ private:
   int _pin = 0;
   unsigned long _CoolDown, _currentMillis;
   bool _PullUpBegun, _Begun = false;
+
+  bool _SnapInSetup, _SnapInActive, _faster; // void SnapIn
+  int _fasterSteps, _Steps = 0; 
+  unsigned long _slowBPS, _fastBPS = 0;
+  unsigned long _startAfter = 0;
+  unsigned long stAf_previousMillis = 0;
 
   bool pr_blocked, pr_pressed = false; // void pressed
   unsigned long pr_previousMillis = 0;
@@ -90,6 +97,8 @@ private:
   bool mo_blocked, mo_pressed, initalised = false; // void modeSwitch
   uint16_t _mode, _LowerEnd, _StartFrom, _UpperEnd = 0;
   unsigned long mo_previousMillis = 0;
+
+  bool _pressed = false;
 };
 
 #endif

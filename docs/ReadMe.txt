@@ -11,7 +11,7 @@ Thanks to @redditUser   - LovableSidekick
                         - xyzzy1337
 
 ###### Created 30.11.2021 ########
-###### last Changed 18.01.2024 ########
+###### last Changed 10.11.2023 ########
 
 Provided functions:
 
@@ -94,24 +94,24 @@ Example: If you want to track a special value but you dont want the serial monit
 MyTimerButton gives you the possibility to debounce a button, that is connected to a specific pin. At first you need to create an instance of your button to provide a PIN number of your board (Where the button is connected to) and a so called CoolDown time. (Thats the time, for the button to debounce - within that period of time the button will not detect any more toggles)
 
 Example: MyTimerButton Button_1(1, 45);
-Explanation: Debounce a Button named "Button_1", that is connected to PIN 1 of your board, with a time of 45 millisecons.
+Explanation: Debounce a Button named "Button_1", that is connected to PIN 1 of your board, with a time of 45 milliseconds.
 
 ****#### begin ####****
 
-This function needs to be called once in the setup() function of your code, to initialise the button if its a normal INPUT (Button connected to 5 volts).
+This function needs to be called once in the setup() function of your code, to initialize the button if its a normal INPUT (Button connected to 5 volts).
 Return: None
 Parameter: None
 
 ****#### beginPullUp ####****
 
-This function needs to be called once in the setup() function of your code, to initialise the button if its a INPUT_PULLUP (Button connected to GND).
+This function needs to be called once in the setup() function of your code, to initialize the button if its a INPUT_PULLUP (Button connected to GND).
 Return: None
 Parameter: None
 
 ****#### activateSnapIn ####****
 
 This function needs to be called once in the setup() function of your code.
-It is to activate the Snap In function of this Button for a continous mode of the function rising().
+It is to activate the Snap In function of this Button for a continuous mode of the function rising().
 Return: None
 Parameter:  unsigned long startAfter - the time after that the function starts
             int fasterSteps - after how many steps the function increases in speed
@@ -120,45 +120,45 @@ Parameter:  unsigned long startAfter - the time after that the function starts
 
 ****#### rising ####****
 
-This function gives you a positive edge result everytime the button is pressed.
+This function gives you a positive edge result every time the button is pressed.
 Return: bool
 Parameter: None
 Example for usage: If you want to trigger a "One-Time_Event" at the moment you press the button.
 
 ****#### falling ####****
 
-This function gives you a negative edge result everytime the button is released.
+This function gives you a negative edge result every time the button is released.
 Return: bool
 Parameter: None
 Example for usage: If you want to trigger a "One-Time_Event" at the moment you release the button.
 
 ****#### pressed ####****
 
-This function gives you a positive result while the button is pressed, but at least as long as you´ve setted the debounce time.
+This function gives you a positive result while the button is pressed, but at least as long as you've set the debounce time.
 Return: bool
 Parameter: None
 Example for usage: If you want to trigger an event, as long as you keep the button pressed.
 
 ****#### released ####****
 
-This function gives you a positive result while the button is not pressed, but at least as long as you´ve setted the debounce time.
+This function gives you a positive result while the button is not pressed, but at least as long as you've sett the debounce time.
 Return: bool
 Parameter: None
 Example for usage: If you want to trigger an event, as long as you do not push the button.
 
 ****#### toggled ####****
 
-This function gives you a changing result everytime the button is pressed. The result switches from TRUE to FALSE (HIGH to LOW) everytime you push the button.
+This function gives you a changing result every time the button is pressed. The result switches from TRUE to FALSE (HIGH to LOW) every time you push the button.
 Return: bool
 Parameter: None
-Example for usage: If you want to switch something on, like an led.
+Example for usage: If you want to switch something on, like a led.
 
 ****#### modeSwitch ####****
 
-This function gives you the possibility to switch throgh numbers by pushing the button.
+This function gives you the possibility to switch through numbers by pushing the button.
 You can adjust the Starting point as well as the End Point and where to start from.
 Return: uint16_t
-Parameter:  - uint16_t LowerEnd: The point to go to, after overgoing the end.
+Parameter:  - uint16_t LowerEnd: The point to go to, after over going the end.
             - uint16_t StartFrom: The point to start from (Start value from the beginning)
             - uint16_t UpperEnd: upper limit of the counter
 Example for usage: If you want to switch through numbers by pushing a button.
